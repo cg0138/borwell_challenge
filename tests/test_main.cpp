@@ -31,3 +31,9 @@ TEST_CASE("Paint_Calculator constructor accepts width, length and height argumen
     CHECK(test.get_length() == 2);
     CHECK(test.get_height() == 3);
 }
+
+TEST_CASE("overloaded constructor calculates the correct floor area")
+{
+    Paint_Calculator test(1, 2, 3);
+    CHECK(test.calculate_floor_area() == 2);
+}
