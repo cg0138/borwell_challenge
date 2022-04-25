@@ -5,15 +5,16 @@
 class Paint_Calculator 
 {
     private:
-        double width = 1;
-        double length = 1;
-        double height = 1;
+        double width = 0;
+        double length = 0;
+        double height = 0;
 
     public:
     	Paint_Calculator();
         double get_width();
         double get_length();
         double get_height();
+        double calculate_floor_area();
     	~Paint_Calculator() = default;
 };
 

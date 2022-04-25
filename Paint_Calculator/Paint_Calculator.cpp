@@ -18,3 +18,8 @@ double Paint_Calculator::get_height()
 {
 	return this->height;
 }
+
+double Paint_Calculator::calculate_floor_area()
+{
+	return this->length * this->width;
+}
