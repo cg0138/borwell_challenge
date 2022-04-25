@@ -23,3 +23,11 @@ TEST_CASE("the method calculate_paint_needed() returns the area of the initial 4
 {
     CHECK(Paint_Calculator().calculate_paint_needed() == 0);
 }
+
+TEST_CASE("Paint_Calculator constructor accepts width, length and height arguments and assigns to data members")
+{
+    Paint_Calculator test(1, 2, 3);
+    CHECK(test.get_width() == 1);
+    CHECK(test.get_length() == 2);
+    CHECK(test.get_height() == 3);
+}

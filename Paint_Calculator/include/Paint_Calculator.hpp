@@ -20,6 +20,7 @@ class Paint_Calculator
 
     public:
     	Paint_Calculator();
+        Paint_Calculator(double width_input, double length_input, double height_input);
         double get_width();
         double get_length();
         double get_height();

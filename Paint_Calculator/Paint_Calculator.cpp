@@ -4,6 +4,10 @@
 Paint_Calculator::Paint_Calculator()
 {}
 
+Paint_Calculator::Paint_Calculator(double width_input, double length_input, double height_input)
+	: width{width_input}, length{length_input}, height{height_input}
+{}
+
 double Paint_Calculator::get_width()
 {
 	return this->width;
