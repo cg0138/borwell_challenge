@@ -28,3 +28,8 @@ double Paint_Calculator::calculate_volume_of_room()
 {
 	return this->width * this->length * this->height;
 }
+
+double Paint_Calculator::calculate_paint_needed()
+{
+	return ( ((this->width * this->height) * 2) + ((this->length * this->height) * 2) );
+}

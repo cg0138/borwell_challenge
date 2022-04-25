@@ -18,3 +18,8 @@ TEST_CASE("the method calculate_volume_of_room() returns the initial volume of t
 {
     CHECK(Paint_Calculator().calculate_volume_of_room() == 0);
 }
+
+TEST_CASE("the method calculate_paint_needed() returns the area of the initial 4 walls")
+{
+    CHECK(Paint_Calculator().calculate_paint_needed() == 0);
+}
