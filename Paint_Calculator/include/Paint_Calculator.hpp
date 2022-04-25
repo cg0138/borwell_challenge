@@ -15,6 +15,7 @@ class Paint_Calculator
         double get_length();
         double get_height();
         double calculate_floor_area();
+        double calculate_volume_of_room();
     	~Paint_Calculator() = default;
 };
 

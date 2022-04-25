@@ -9,7 +9,12 @@ TEST_CASE("a Paint_Calculator object can be created, with arbritrary dimensions 
     CHECK(Paint_Calculator().get_height() == 0);
 }
 
-TEST_CASE("the method calculate_floor_area() returns the floor area")
+TEST_CASE("the method calculate_floor_area() returns the initial floor area")
 {
     CHECK(Paint_Calculator().calculate_floor_area() == 0);
+}
+
+TEST_CASE("the method calculate_volume_of_room() returns the initial volume of the room")
+{
+    CHECK(Paint_Calculator().calculate_volume_of_room() == 0);
 }
