@@ -37,3 +37,15 @@ TEST_CASE("overloaded constructor calculates the correct floor area")
     Paint_Calculator test(1, 2, 3);
     CHECK(test.calculate_floor_area() == 2);
 }
+
+TEST_CASE("overloaded constructor calculates the correct room volume")
+{
+    Paint_Calculator test(1, 2, 3);
+    CHECK(test.calculate_volume_of_room() == 6);
+}
+
+TEST_CASE("overloaded constructor calculates the correct paint needed for the 4 walls")
+{
+    Paint_Calculator test(1, 2, 3);
+    CHECK(test.calculate_paint_needed() == 18);
+}
