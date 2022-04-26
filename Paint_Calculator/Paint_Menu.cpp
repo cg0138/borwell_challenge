@@ -1,6 +1,9 @@
 #include <iostream>
 #include ".\include\Paint_Menu.hpp"
 
+Paint_Menu::Paint_Menu()
+{}
+
 void Paint_Menu::display_menu(std::ostream& output)
 {
     output << "Welcome to the Paint Menu\n\n"
@@ -27,18 +30,21 @@ void Paint_Menu::display_sub_menus(int user_option, std::ostream& output)
         case 1:
         {
             output << "Please enter the room width (m): ";
+            this->input_width();
             break;
         }
 
         case 2:
         {
             output << "Please enter the room length (m): ";
+            this->input_length();
             break;
         }
 
         case 3:
         {
             output << "Please enter the room height (m): ";
+            this->input_height();
             break;
         }
 
@@ -63,4 +69,25 @@ void Paint_Menu::display_sub_menus(int user_option, std::ostream& output)
         default:
             break;
     }
+}
+
+void Paint_Menu::input_width()
+{
+    double input_width = 0;
+    std::cin >> input_width;
+    this->width = input_width;
+}
+
+void Paint_Menu::input_length()
+{
+    double input_length = 0;
+    std::cin >> input_length;
+    this->length = input_length;
+}
+
+void Paint_Menu::input_height()
+{
+    double input_height = 0;
+    std::cin >> input_height;
+    this->height = input_height;
 }

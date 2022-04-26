@@ -55,7 +55,8 @@ TEST_CASE("overloaded constructor calculates the correct paint needed for the 4 
 TEST_CASE("a menu is displayed when display_menu() is called")
 {
     std::stringstream ss;
-    Paint_Menu::display_menu(ss);
+    Paint_Menu test;
+    test.display_menu(ss);
 
     std::string s1 = "Welcome to the Paint Menu\n\n";
     std::string s2 = "Please select an option:\n";
@@ -70,32 +71,36 @@ TEST_CASE("a menu is displayed when display_menu() is called")
 
     CHECK(ss.str() == temp);
 }
-    
+ 
 TEST_CASE("each menu option displays a new sub menu")
 {
     std::stringstream ss;
-    
-    Paint_Menu::display_sub_menus(1, ss);
+    Paint_Menu test;
+
+    std::cout << "Enter the width for testing: ";
+    test.display_sub_menus(1, ss);
     CHECK(ss.str() == "Please enter the room width (m): ");
     ss.str("");
     
-    Paint_Menu::display_sub_menus(2, ss);
+    std::cout << "Enter the length for testing: ";
+    test.display_sub_menus(2, ss);
     CHECK(ss.str() == "Please enter the room length (m): ");
     ss.str("");
     
-    Paint_Menu::display_sub_menus(3, ss);
+    std::cout << "Enter the height for testing: ";
+    test.display_sub_menus(3, ss);
     CHECK(ss.str() == "Please enter the room height (m): ");
     ss.str("");
     
-    Paint_Menu::display_sub_menus(4, ss);
+    test.display_sub_menus(4, ss);
     CHECK(ss.str() == "The floor area of the room (m2): ");
     ss.str("");
     
-    Paint_Menu::display_sub_menus(5, ss);
+    test.display_sub_menus(5, ss);
     CHECK(ss.str() == "The volume of the room (m3): ");
     ss.str("");
     
-    Paint_Menu::display_sub_menus(6, ss);
+    test.display_sub_menus(6, ss);
     CHECK(ss.str() == "The amount of paint needed to decorate the room (m2): ");
     ss.str("");
 }
