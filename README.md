@@ -2,7 +2,8 @@
 
 2. cd build
 
-3. cmake -S .. -B . -G "MinGW Makefiles" // on windows\n
+3. cmake -S .. -B . -G "MinGW Makefiles" // on windows
+
    cmake -S .. -B . -G "Unix Makefiles"  // on Linux
 
 4. make
