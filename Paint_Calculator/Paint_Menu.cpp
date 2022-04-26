@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include ".\include\Paint_Menu.hpp"
 
 Paint_Menu::Paint_Menu()
@@ -23,46 +24,51 @@ int Paint_Menu::user_menu_input()
     return user_option;
 }
 
-void Paint_Menu::display_sub_menus(int user_option, std::ostream& output)
+void Paint_Menu::display_sub_menus(std::string user_option, std::ostream& output, std::istream& input)
 {
-    switch (user_option)
+    int user_option_num = std::stoi(user_option);
+    
+    switch (user_option_num)
     {   
         case 1:
         {
             output << "Please enter the room width (m): ";
-            this->input_width();
+            this->input_width(input);
             break;
         }
 
         case 2:
         {
             output << "Please enter the room length (m): ";
-            this->input_length();
+            this->input_length(input);
             break;
         }
 
         case 3:
         {
             output << "Please enter the room height (m): ";
-            this->input_height();
+            this->input_height(input);
             break;
         }
 
         case 4:
         {
             output << "The floor area of the room (m2): ";
+            this->generate_calculator().calculate_floor_area();
             break;
         }
 
         case 5:
         {
             output << "The volume of the room (m3): ";
+            this->generate_calculator().calculate_volume_of_room();
             break;
         }
 
         case 6:
         {
             output << "The amount of paint needed to decorate the room (m2): ";
+            this->generate_calculator().calculate_paint_needed();
             break;
         }
 
@@ -71,23 +77,29 @@ void Paint_Menu::display_sub_menus(int user_option, std::ostream& output)
     }
 }
 
-void Paint_Menu::input_width()
+void Paint_Menu::input_width(std::istream& input)
 {
     double input_width = 0;
-    std::cin >> input_width;
+    input >> input_width;
     this->width = input_width;
 }
 
-void Paint_Menu::input_length()
+void Paint_Menu::input_length(std::istream& input)
 {
     double input_length = 0;
-    std::cin >> input_length;
+    input >> input_length;
     this->length = input_length;
 }
 
-void Paint_Menu::input_height()
+void Paint_Menu::input_height(std::istream& input)
 {
     double input_height = 0;
-    std::cin >> input_height;
+    input >> input_height;
     this->height = input_height;
+}
+
+Paint_Calculator Paint_Menu::generate_calculator()
+{
+    Paint_Calculator paint_calculator (this->width, this->length, this->height);
+    return paint_calculator;
 }

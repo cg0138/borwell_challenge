@@ -75,32 +75,55 @@ TEST_CASE("a menu is displayed when display_menu() is called")
 TEST_CASE("each menu option displays a new sub menu")
 {
     std::stringstream ss;
+    std::stringstream is("1"); // this passes in a 1 to the input stream for testing
     Paint_Menu test;
 
-    std::cout << "Enter the width for testing: ";
-    test.display_sub_menus(1, ss);
+    test.display_sub_menus("1", ss, is);
     CHECK(ss.str() == "Please enter the room width (m): ");
-    ss.str("");
+    ss.str(""); // empties the stringstream after each test
     
-    std::cout << "Enter the length for testing: ";
-    test.display_sub_menus(2, ss);
+    test.display_sub_menus("2", ss, is);
     CHECK(ss.str() == "Please enter the room length (m): ");
     ss.str("");
     
-    std::cout << "Enter the height for testing: ";
-    test.display_sub_menus(3, ss);
+    test.display_sub_menus("3", ss, is);
     CHECK(ss.str() == "Please enter the room height (m): ");
     ss.str("");
     
-    test.display_sub_menus(4, ss);
+    test.display_sub_menus("4", ss, is);
     CHECK(ss.str() == "The floor area of the room (m2): ");
     ss.str("");
     
-    test.display_sub_menus(5, ss);
+    test.display_sub_menus("5", ss, is);
     CHECK(ss.str() == "The volume of the room (m3): ");
     ss.str("");
     
-    test.display_sub_menus(6, ss);
+    test.display_sub_menus("6", ss, is);
     CHECK(ss.str() == "The amount of paint needed to decorate the room (m2): ");
     ss.str("");
+}
+
+TEST_CASE("a Paint_Calculator object can be constructed within Paint_Menu, and calculations performed")
+{
+    std::stringstream ss;
+    std::stringstream width("2"); // these 3 variables pass in 2, 4, 6 to the width, length, height respecyively (for testing)
+    std::stringstream length("4");
+    std::stringstream height("6");
+    Paint_Menu test;
+
+    test.display_sub_menus("1", ss, width);
+    ss.str(""); // empties the stringstream after each test
+    
+    test.display_sub_menus("2", ss, length);
+    ss.str("");
+    
+    test.display_sub_menus("3", ss, height);
+    ss.str("");
+
+    CHECK(test.generate_calculator().get_width() == 2);
+    CHECK(test.generate_calculator().get_length() == 4);
+    CHECK(test.generate_calculator().get_height() == 6);
+    CHECK(test.generate_calculator().calculate_floor_area() == 8);
+    CHECK(test.generate_calculator().calculate_volume_of_room() == 48);
+    CHECK(test.generate_calculator().calculate_paint_needed() == 72);
 }
