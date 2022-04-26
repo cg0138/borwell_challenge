@@ -2,14 +2,7 @@
 #define _PAINT_CALCULATOR_HPP_
 #include <iostream>
 
-/*
-how many coats
-price of paint / size of tin / coverage of tin for the total price
-include/exclude walls
-estimated time
-search for local diy stores
-search online for prices
-*/
+
 
 class Paint_Calculator 
 {
