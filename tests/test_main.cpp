@@ -1,6 +1,8 @@
 #define CONFIG_CATCH_MAIN
 #include <catch2/catch_test_macros.hpp>
+#include <sstream>
 #include "../Paint_Calculator/include/Paint_Calculator.hpp"
+#include "../Paint_Calculator/include/Paint_Menu.hpp"
 
 TEST_CASE("a Paint_Calculator object can be created, with arbritrary dimensions assigned to data members")
 {
@@ -48,4 +50,52 @@ TEST_CASE("overloaded constructor calculates the correct paint needed for the 4 
 {
     Paint_Calculator test(1, 2, 3);
     CHECK(test.calculate_paint_needed() == 18);
+}
+
+TEST_CASE("a menu is displayed when display_menu() is called")
+{
+    std::stringstream ss;
+    Paint_Menu::display_menu(ss);
+
+    std::string s1 = "Welcome to the Paint Menu\n\n";
+    std::string s2 = "Please select an option:\n";
+    std::string s3 = "    1. Enter room width\n";
+    std::string s4 = "    2. Enter room length\n";
+    std::string s5 = "    3. Enter room height\n";
+    std::string s6 = "    4. Calculate floor area\n";
+    std::string s7 = "    5. Calculate room volume\n";
+    std::string s8 = "    6. Calculate paint needed\n";
+
+    std::string temp = s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8;
+
+    CHECK(ss.str() == temp);
+}
+    
+TEST_CASE("each menu option displays a new sub menu")
+{
+    std::stringstream ss;
+    
+    Paint_Menu::display_sub_menus(1, ss);
+    CHECK(ss.str() == "Please enter the room width (m): ");
+    ss.str("");
+    
+    Paint_Menu::display_sub_menus(2, ss);
+    CHECK(ss.str() == "Please enter the room length (m): ");
+    ss.str("");
+    
+    Paint_Menu::display_sub_menus(3, ss);
+    CHECK(ss.str() == "Please enter the room height (m): ");
+    ss.str("");
+    
+    Paint_Menu::display_sub_menus(4, ss);
+    CHECK(ss.str() == "The floor area of the room (m2): ");
+    ss.str("");
+    
+    Paint_Menu::display_sub_menus(5, ss);
+    CHECK(ss.str() == "The volume of the room (m3): ");
+    ss.str("");
+    
+    Paint_Menu::display_sub_menus(6, ss);
+    CHECK(ss.str() == "The amount of paint needed to decorate the room (m2): ");
+    ss.str("");
 }
