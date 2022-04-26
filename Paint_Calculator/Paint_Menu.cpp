@@ -7,7 +7,7 @@ Paint_Menu::Paint_Menu()
 
 void Paint_Menu::display_menu(std::ostream& output)
 {
-    output << "Welcome to the Paint Menu\n\n"
+    output << "\nWelcome to the Paint Menu\n\n"
            << "Please select an option:\n"
            << "    1. Enter room width\n"
            << "    2. Enter room length\n"
@@ -17,9 +17,9 @@ void Paint_Menu::display_menu(std::ostream& output)
            << "    6. Calculate paint needed\n";
 }
 
-int Paint_Menu::user_menu_input()
+std::string Paint_Menu::user_menu_input()
 {
-    int user_option = 0;
+    std::string user_option;
     std::cin >> user_option;
     return user_option;
 }
@@ -54,21 +54,24 @@ void Paint_Menu::display_sub_menus(std::string user_option, std::ostream& output
         case 4:
         {
             output << "The floor area of the room (m2): ";
-            this->generate_calculator().calculate_floor_area();
+            Paint_Calculator temp = this->generate_calculator();
+            std::cout << temp.calculate_floor_area() << std::endl;
             break;
         }
 
         case 5:
         {
             output << "The volume of the room (m3): ";
-            this->generate_calculator().calculate_volume_of_room();
+            Paint_Calculator temp = this->generate_calculator();
+            std::cout << temp.calculate_volume_of_room() << std::endl;
             break;
         }
 
         case 6:
         {
             output << "The amount of paint needed to decorate the room (m2): ";
-            this->generate_calculator().calculate_paint_needed();
+            Paint_Calculator temp = this->generate_calculator();
+            std::cout << temp.calculate_paint_needed() << std::endl;
             break;
         }
 

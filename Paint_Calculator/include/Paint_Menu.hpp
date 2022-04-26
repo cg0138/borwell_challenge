@@ -14,7 +14,7 @@ class Paint_Menu
     public:
         Paint_Menu();
         static void display_menu(std::ostream& output);
-        static int user_menu_input();
+        static std::string user_menu_input();
         void display_sub_menus(std::string user_option, std::ostream& output, std::istream& input);
         void input_width(std::istream& input);
         void input_length(std::istream& input);

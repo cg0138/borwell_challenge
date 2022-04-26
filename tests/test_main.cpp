@@ -58,7 +58,7 @@ TEST_CASE("a menu is displayed when display_menu() is called")
     Paint_Menu test;
     test.display_menu(ss);
 
-    std::string s1 = "Welcome to the Paint Menu\n\n";
+    std::string s1 = "\nWelcome to the Paint Menu\n\n";
     std::string s2 = "Please select an option:\n";
     std::string s3 = "    1. Enter room width\n";
     std::string s4 = "    2. Enter room length\n";
@@ -119,11 +119,13 @@ TEST_CASE("a Paint_Calculator object can be constructed within Paint_Menu, and c
     
     test.display_sub_menus("3", ss, height);
     ss.str("");
+    
+    Paint_Calculator temp = test.generate_calculator();
 
-    CHECK(test.generate_calculator().get_width() == 2);
-    CHECK(test.generate_calculator().get_length() == 4);
-    CHECK(test.generate_calculator().get_height() == 6);
-    CHECK(test.generate_calculator().calculate_floor_area() == 8);
-    CHECK(test.generate_calculator().calculate_volume_of_room() == 48);
-    CHECK(test.generate_calculator().calculate_paint_needed() == 72);
+    CHECK(temp.get_width() == 2);
+    CHECK(temp.get_length() == 4);
+    CHECK(temp.get_height() == 6);
+    CHECK(temp.calculate_floor_area() == 8);
+    CHECK(temp.calculate_volume_of_room() == 48);
+    CHECK(temp.calculate_paint_needed() == 72);
 }
